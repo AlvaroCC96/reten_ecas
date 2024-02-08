@@ -1,11 +1,106 @@
-{% extends 'layouts/index.html'%} {% block title %} Ausencia Pruebas Departamentales {% endblock %} 
+{% extends './layouts/index_ausencia.html'%} {% block title %} Ausencia Pruebas Departamentales {% endblock %} 
 {% block content %}
 
-<h2 class="mb-4">Ausencia Pruebas Departamentales</h2>
 <div class="row">
-VISTA AUSENCIA Departamentales
+    <div class="col-md-6 px-4">
+        <div class="row">
+            <div class="col-8">
+                <h2>Ausencia Pruebas Departamentales</h2>    
+            </div>
+            <div class="col-4">
+                <a href="/configuracion" class="btn btn-secondary">Volver</a>
+            </div>
+        </div>
+        <hr>
+        <form action="#">
+            <div class="row mt-3">
+                <div class="col-md-3 mb-3">
+                    <label for="fecha">Fecha: </label>
+                    <input type="date" class="form-control" name="fecha">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="rut">Rut: </label>
+                    <select class="form-control" name="rut">
+                        <option value="">-- Seleccionar --</option>
+                        <option value="12345678-9">RUT 1</option>
+                        <option value="98765432-1">RUT 2</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="departamental">Departamental: </label>
+                    <select class="form-control" name="departamental">
+                        <option value="">-- Seleccionar --</option>
+                        <option value="1">Departamental 1</option>
+                        <option value="2">Departamental 2</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="row">
+                        <div class="col py-2">
+                            <button type="submit" class="btn btn-primary">Agregar ausencia</button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Eliminar ausencia</button>
+                </div>
+            </div>
+        
+
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Código</th>
+                            <th>Asignatura</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" class="form-check-input"></td>
+                            <td>ACCESS</td>
+                            <td>ACCES (ACS)</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="form-check-input"></td>
+                            <td>ADMN-124</td>
+                            <td>ADMINISTRACIÓN</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-6 px-4">
+        <h2>Listado Ausencias</h2>
+
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>FECHA</th>
+                        <th>RUT</th>
+                        <th>C&Oacute;DIGO</th>
+                        <th>ASIGNATURA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024-02-07</td>
+                        <td>RUT 1</td>
+                        <td>ACCESS</td>
+                        <td>ACCES (ACS)</td>
+                    </tr>
+                    <tr>
+                        <td>2024-02-07</td>
+                        <td>RUT 2</td>
+                        <td>ADMN-124</td>
+                        <td>ADMINISTRACIÓN</td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
 </div>
 
-<a href="/configuracion" class="btn btn-secondary mt-4">Volver</a>
+
 
 {% endblock %}
