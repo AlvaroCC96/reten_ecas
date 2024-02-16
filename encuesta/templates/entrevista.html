@@ -1,0 +1,86 @@
+{% extends 'layouts/index.html' %}
+{% block title %} Encuetas - Entrevista{% endblock %} 
+{% block content %}
+<div class="row">
+  
+  <div class="col-md-9">
+
+    <div class="row">
+      <div class="col-8">
+        <h2>Entrevista</h2>
+        <p>Descripci&oacute;n de la entrevista</p>
+      </div>
+      <div class="col-4">
+          <a href="/encuestas" class="btn btn-secondary">Volver</a>
+      </div>
+    </div>
+
+    <form action="#">
+      <div class="row">
+          <div class="col-md-3">
+              <label for="rut">RUT</label>
+              <select class="form-control" name="rut" id="rut">
+                  <option value="">-- Seleccionar --</option>
+                  <option value="12.345.678-9">Juan Pérez</option>
+                  <option value="9.876.543-2">Ana González</option>
+              </select>
+          </div>
+      </div>
+
+      <div class="row mt-3">
+          <div class="col-md-12">
+            <h5>Pregunta 1</h5>
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="pregunta1" id="respuesta1" value="1">
+                <label class="form-check-label" for="respuesta1">Respuesta 1</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="pregunta1" id="respuesta2" value="2">
+                <label class="form-check-label" for="respuesta2">Respuesta 2</label>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <h5>Pregunta 2</h5>
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="pregunta1" id="respuesta1" value="1">
+              <label class="form-check-label" for="respuesta1">Respuesta 1</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="pregunta1" id="respuesta2" value="2">
+              <label class="form-check-label" for="respuesta2">Respuesta 2</label>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <h5>Pregunta 3</h5>
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="pregunta1" id="respuesta1" value="1">
+              <label class="form-check-label" for="respuesta1">Respuesta 1</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="pregunta1" id="respuesta2" value="2">
+              <label class="form-check-label" for="respuesta2">Respuesta 2</label>
+            </div>
+          </div>          
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-6 text-end">
+          <button type="submit" class="btn btn-primary">Ingresar Encuesta</button>
+        </div>
+      </div>
+    </form>
+</div>
+{% endblock %}
