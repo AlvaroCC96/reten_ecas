@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('ausenciaDepartamentales.urls')),
     path('', include('usuariosSatra.urls')),
     path('', include('modelos.urls')),
+    path('', include('encuesta.urls')),
 ]
