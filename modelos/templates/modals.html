@@ -1,0 +1,437 @@
+<!--Modal Toma de-->
+<div class="modal fade" id="agregarRegistroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Registro</h5>
+          
+        </div>
+        <div class="modal-body">
+          <!-- Formulario para agregar nuevo registro -->
+          <form id="agregarRegistroForm">
+
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="anio">Año</label>
+                        <input type="number" class="form-control" name="anio" id="anio" required min="2023">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="semestre">Semestre</label>
+                        <select class="form-control" name="semestre" id="semestre" required>
+                            <option value="">-- Seleccionar --</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="dias_previos">Días previos</label>
+                        <input type="number" class="form-control" name="dias_previos" id="dias_previos" required min="0">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="descripcion_a">Descripción A</label>
+                        <textarea class="form-control" name="descripcion_a" id="descripcion_a" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="dias_previos">Días Alarma</label>
+                        <input type="number" class="form-control" name="dias_alarma" id="dias_alarma" required min="0">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="descripcion_a">Descripción B</label>
+                        <textarea class="form-control" name="descripcion_b" id="descripcion_b" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <hr>            
+
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="fecha_inicial">Fecha Inicial</label>
+                        <input type="date" class="form-control" name="fecha_inicial" id="fecha_inicial" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fecha_fin">Fecha Fin</label>
+                        <input type="date" class="form-control" name="fecha_fin" id="fecha_fin" required>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="activo">Activo:</label>
+                        <select class="form-control" id="activo" name="activo">
+                            <option value="true">Sí</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+          <button type="button" class="btn btn-primary" id="guardarRegistroBtn">Guardar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<!--Modal Notas Parciales-->
+<div class="modal fade" id="agregarRegistroModalNotasParciales" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Registro</h5>
+          
+        </div>
+        <div class="modal-body">
+          <!-- Formulario para agregar nuevo registro -->
+          <form id="agregarRegistroFormNotasParciales">
+
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="anio">Año</label>
+                        <input type="number" class="form-control" name="anio" id="anio" required min="2023">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="semestre">Semestre</label>
+                        <select class="form-control" name="semestre" id="semestre" required>
+                            <option value="">-- Seleccionar --</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="cantidad_controles">Cantidad de Controles</label>
+                        <input type="number" class="form-control" name="cantidad_controles" id="cantidad_controles" required min="1">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="descripcion_a">Descripción A</label>
+                        <textarea class="form-control" name="descripcion_a" id="descripcion_a" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="promedio_nota">Promedio Nota</label>
+                        <input type="number" class="form-control" name="promedio_nota" id="promedio_nota" required min="0">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="descripcion_a">Descripción B</label>
+                        <textarea class="form-control" name="descripcion_b" id="descripcion_b" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <hr>            
+
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="fecha_inicial">Fecha Inicial</label>
+                        <input type="date" class="form-control" name="fecha_inicial" id="fecha_inicial" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fecha_fin">Fecha Fin</label>
+                        <input type="date" class="form-control" name="fecha_fin" id="fecha_fin" required>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="activo">Activo:</label>
+                        <select class="form-control" id="activo" name="activo">
+                            <option value="true">Sí</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+          <button type="button" class="btn btn-primary" id="guardarRegistroBtn">Guardar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!--Inasistencia Departamentales-->
+<div class="modal fade" id="agregarRegistroModalInasistenciaDepartamentales" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Registro</h5>
+          
+        </div>
+        <div class="modal-body">
+          <!-- Formulario para agregar nuevo registro -->
+          <form id="agregarRegistroFormInasistenciaDepartamentales">
+
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="anio">Año</label>
+                        <input type="number" class="form-control" name="anio" id="anio" required min="2023">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="semestre">Semestre</label>
+                        <select class="form-control" name="semestre" id="semestre" required>
+                            <option value="">-- Seleccionar --</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="inasistencia_dep1">Inasistencia Departamental 1</label>
+                        <input type="number" class="form-control" name="inasistencia_dep1" id="inasistencia_dep1" required min="1">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="descripcion_a">Descripción A</label>
+                        <textarea class="form-control" name="descripcion_a" id="descripcion_a" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="inasistencia_dep2">Inasistencia Departamental 2</label>
+                        <input type="number" class="form-control" name="inasistencia_dep2" id="inasistencia_dep2" required min="0">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="descripcion_a">Descripción B</label>
+                        <textarea class="form-control" name="descripcion_b" id="descripcion_b" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <hr>            
+
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="fecha_inicial">Fecha Inicial</label>
+                        <input type="date" class="form-control" name="fecha_inicial" id="fecha_inicial" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fecha_fin">Fecha Fin</label>
+                        <input type="date" class="form-control" name="fecha_fin" id="fecha_fin" required>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="activo">Activo:</label>
+                        <select class="form-control" id="activo" name="activo">
+                            <option value="true">Sí</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+          <button type="button" class="btn btn-primary" id="guardarRegistroBtn">Guardar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!--Notas Departamentales-->
+<div class="modal fade" id="agregarRegistroModalNotasDepartamentales" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Registro</h5>
+          
+        </div>
+        <div class="modal-body">
+          <!-- Formulario para agregar nuevo registro -->
+          <form id="agregarRegistroFormNotasDepartamentales">
+
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="anio">Año</label>
+                        <input type="number" class="form-control" name="anio" id="anio" required min="2023">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="semestre">Semestre</label>
+                        <select class="form-control" name="semestre" id="semestre" required>
+                            <option value="">-- Seleccionar --</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="rendimiento">Rendimiento</label>
+                        <input type="number" class="form-control" name="inasistencia_dep1" id="rendimiento" required min="1">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="descripcion_a">Descripción A</label>
+                        <textarea class="form-control" name="descripcion_a" id="descripcion_a" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <hr>           
+
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="fecha_inicial">Fecha Inicial</label>
+                        <input type="date" class="form-control" name="fecha_inicial" id="fecha_inicial" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fecha_fin">Fecha Fin</label>
+                        <input type="date" class="form-control" name="fecha_fin" id="fecha_fin" required>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="activo">Activo:</label>
+                        <select class="form-control" id="activo" name="activo">
+                            <option value="true">Sí</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+          <button type="button" class="btn btn-primary" id="guardarRegistroBtn">Guardar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!--Rendimiento Semestre Previo-->
+<div class="modal fade" id="agregarRegistroModalRendimientoSemestrePrevio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Registro</h5>
+          
+        </div>
+        <div class="modal-body">
+          <!-- Formulario para agregar nuevo registro -->
+          <form id="agregarRegistroFormNotasDepartamentales">
+
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="anio">Año</label>
+                        <input type="number" class="form-control" name="anio" id="anio" required min="2023">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="semestre">Semestre</label>
+                        <select class="form-control" name="semestre" id="semestre" required>
+                            <option value="">-- Seleccionar --</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="rendimiento">Rendimiento</label>
+                        <input type="number" class="form-control" name="inasistencia_dep1" id="rendimiento" required min="1">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="descripcion_a">Descripción A</label>
+                        <textarea class="form-control" name="descripcion_a" id="descripcion_a" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <hr>           
+
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="fecha_inicial">Fecha Inicial</label>
+                        <input type="date" class="form-control" name="fecha_inicial" id="fecha_inicial" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fecha_fin">Fecha Fin</label>
+                        <input type="date" class="form-control" name="fecha_fin" id="fecha_fin" required>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="activo">Activo:</label>
+                        <select class="form-control" id="activo" name="activo">
+                            <option value="true">Sí</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+          <button type="button" class="btn btn-primary" id="guardarRegistroBtn">Guardar</button>
+        </div>
+      </div>
+    </div>
+</div>

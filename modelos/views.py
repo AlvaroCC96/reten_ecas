@@ -13,22 +13,22 @@ def carrera(request):
     return render(request, 'carrera.html')
 
 def tomaRamos(request):
-    return render(request, 'toma_ramos.html')
+    return render(request, 'mantenedor_toma_ramos.html')
 
 def asistenciaClases(request):
-    return render(request, 'asistencia_clases.html')
+    return render(request, 'mantenedor_asistencia.html')
 
 def inasistenciaDepartamentales(request):
-    return render(request, 'inasistencia_departamentales.html')
+    return render(request, 'mantenedor_inasistencia_departamentales.html')
 
 def notasDepartamentales(request):
-    return render(request, 'notas_departamentales.html')
+    return render(request, 'mantenedor_notas_departamentales.html')
 
 def notasParciales(request):
-    return render(request, 'notas_parciales.html')
+    return render(request, 'mantenedor_notas_parciales.html')
 
 def rendimientoSemestrePrevio(request):
-    return render(request, 'rendimiento_semestre_previo.html')
+    return render(request, 'mantenedor_rendimiento_semestre_previo.html')
 
 def inasistenciaControles(request):
     return render(request, 'inasistencia_controles.html')
