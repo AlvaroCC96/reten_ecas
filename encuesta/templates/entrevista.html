@@ -1,13 +1,13 @@
 {% extends 'layouts/index.html' %}
-{% block title %} Encuetas - Entrevista{% endblock %} 
+{% load static %}
+{% block title %} Encuestas - Entrevista{% endblock %} 
 {% block content %}
+<h2>Entrevista</h2>
 <div class="row">
-  
-  <div class="col-md-9">
-
+  <div class="col-md">
     <div class="row">
       <div class="col-8">
-        <h2>Entrevista</h2>
+        
         <p>Descripci&oacute;n de la entrevista</p>
       </div>
       <div class="col-4">
@@ -15,67 +15,46 @@
       </div>
     </div>
 
-    <form action="#">
+    <form id ="form_entrevista">
+      {% csrf_token %}
       <div class="row">
-          <div class="col-md-3">
-              <label for="rut">RUT</label>
-              <select class="form-control" name="rut" id="rut">
-                  <option value="">-- Seleccionar --</option>
-                  <option value="12.345.678-9">Juan Pérez</option>
-                  <option value="9.876.543-2">Ana González</option>
+          <div class="col-md-6">
+              <label for="id_alumno">Rut: </label>
+              <select class="form-control" id="id_alumno" required>
+                  <option value="">Seleccionar</option>
+                  {% for alumno in alumnos %}
+                      <option value={{ alumno.0}}> {{ alumno.1}} - {{alumno.2}}</option>
+                  {% endfor %}
               </select>
           </div>
       </div>
 
       <div class="row mt-3">
-          <div class="col-md-12">
-            <h5>Pregunta 1</h5>
-            <div class="form-group">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="pregunta1" id="respuesta1" value="1">
-                <label class="form-check-label" for="respuesta1">Respuesta 1</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="pregunta1" id="respuesta2" value="2">
-                <label class="form-check-label" for="respuesta2">Respuesta 2</label>
-              </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="row mt-3">
-        <div class="col-md-12">
-          <h5>Pregunta 2</h5>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="pregunta1" id="respuesta1" value="1">
-              <label class="form-check-label" for="respuesta1">Respuesta 1</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="pregunta1" id="respuesta2" value="2">
-              <label class="form-check-label" for="respuesta2">Respuesta 2</label>
-            </div>
-          </div>
-          
-          
+        <div class="col" style="max-height: 500px; overflow-y: auto; border: 1px solid black;">
+            {% for pregunta in cuestionario %}
+                {% if pregunta.pregunta_id == 25 %}
+                  <h3>Que tan importante es para usted…</h3>
+                  <hr>
+                {% endif %}
+                <div class="form-group" data-numero-pregunta="{{pregunta.pregunta_id}}">
+                  <h5>{{ pregunta.pregunta_id }} - {{ pregunta.pregunta }}</h5>
+                  {% if pregunta.pregunta_id != 34 %}
+                    {% for respuesta in pregunta.respuestas %}
+                      <div class="form-check">
+                        <label class="form-check-label" for="respuesta{{ respuesta.respuesta_id }}">{{ respuesta.respuesta }}</label>
+                        <input class="form-check-input" type="radio" name="pregunta{{ pregunta.pregunta_id }}" id="respuesta{{ respuesta.respuesta_id }}" value="{{ respuesta.respuesta_id }}" required>
+                      </div>
+                    {% endfor %}
+                  {% else %}
+                    <input class="form-control" type="text" name="pregunta{{ pregunta.pregunta_id }}" id="respuesta{{ respuesta.respuesta_id }}" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+" title="Solo se permiten letras, espacios y acentos" required>
+                  {% endif %}
+                  <hr>
+                </div>
+               
+            {% endfor %}
         </div>
-      </div>
+    </div>
 
-      <div class="row mt-3">
-        <div class="col-md-12">
-          <h5>Pregunta 3</h5>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="pregunta1" id="respuesta1" value="1">
-              <label class="form-check-label" for="respuesta1">Respuesta 1</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="pregunta1" id="respuesta2" value="2">
-              <label class="form-check-label" for="respuesta2">Respuesta 2</label>
-            </div>
-          </div>          
-        </div>
-      </div>
       <div class="row mt-3">
         <div class="col-md-6 text-end">
           <button type="submit" class="btn btn-primary">Ingresar Encuesta</button>
@@ -83,4 +62,12 @@
       </div>
     </form>
 </div>
+{% endblock %}
+{% block scripts %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static './js/scripts_encuestas.js' %}"></script>
+
 {% endblock %}

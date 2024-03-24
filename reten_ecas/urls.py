@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('usuariosSatra.urls')),
     path('', include('modelos.urls')),
     path('', include('encuesta.urls')),
+    path('', include('gestion.urls')),
 ]

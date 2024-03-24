@@ -1,7 +1,75 @@
 {% extends 'layouts/index_encuesta.html' %}
 {% block title %} Encuetas - An&aacute;lisis {% endblock %} 
 {% block content %}
-<div class="row">
-  Vista An&aacute;lisis
+<div class="row mb-4">
+    <div class="col-md-8">
+        <label for="categorias"><h5>Seleccione una categor&iacute;a:</h5></label>
+        <select class="form-control" id="categorias">
+            <option value="">Seleccionar</option>
+            {% for categoria in categorias %}
+                <option value={{ categoria.0}}> {{ categoria.0}} - {{categoria.1}}</option>
+            {% endfor %}
+        </select>
+    </div>
 </div>
+<hr>
+<div class="row">
+  <div col-md-6>
+    <canvas id="myChart" width="400" height="100"></canvas>
+  </div>
+  
+</div>
+{% endblock %}
+
+{% block scripts %} 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    $(document).ready(function() {
+        $('#categorias').on('change', function() {
+            let categoria = $(this).val();
+            obtenerDatosGrafico(categoria);
+        });
+
+        const obtenerDatosGrafico = (id_categoria) => {
+            fetch('../obtener_datos_grafico/' + id_categoria)  // Reemplaza '/obtener_datos_grafico/' con la URL correcta de tu endpoint
+            .then(response => response.json())
+            .then(data => {
+                // Extraer datos y etiquetas del objeto JSON
+                const labels = data.labels;
+                const datos = data.datos;
+
+                // Actualizar datos del gráfico
+                myChart.data.labels = labels;
+                myChart.data.datasets[0].data = datos;
+                myChart.update();
+            })
+            .catch(error => console.error('Error al obtener datos del servidor:', error));
+        }
+    });
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Cantidad de respuestas',
+                data: [],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 {% endblock %}

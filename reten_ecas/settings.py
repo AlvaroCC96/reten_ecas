@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,6 +44,8 @@ INSTALLED_APPS = [
     'usuariosSatra',
     'modelos',
     'encuesta',
+    'modelosBD',
+    'gestion',
 ]
 
 MIDDLEWARE = [
@@ -87,6 +90,7 @@ DATABASES = {
         'PASSWORD': '123',
         'HOST': "DESKTOP-QCP5VO2\\SQLEXPRESS",
         'PORT': '',
+        'COLLATION': 'Modern_Spanish_CI_AS',
         'OPTIONS':{
             'driver': 'SQL Server Native Client 10.0',
         }
