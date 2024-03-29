@@ -1,0 +1,115 @@
+<!-- Modal Detalle Usuario -->
+<div class="modal fade" id="editarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Detalle Usuario</h5>
+        </div>
+        <div class="modal-body">
+          <!-- Formulario para agregar nuevo registro -->
+          <form id="editarUsuario">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="id_usuario" hidden id="id_usuario" disabled>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="usuario">Usuario</label>
+                        <input type="text" class="form-control" name="usuario" id="usuario" required disabled>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="persona">Persona</label>
+                        <input type="text" class="form-control" name="persona" id="persona" required disabled>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="cargo">Cargo</label>
+                        <input type="text" class="form-control" name="cargo" id="cargo" required disabled>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="activo">Activo</label>
+                        <select class="form-control" name="activo" id="activo" required disabled>
+                            <option value="">-- Seleccionar --</option>
+                            <option value="true">Si</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="fecha_ini">Fecha Inicio</label>
+                        <input type="date" class="form-control" name="fecha_ini" id="fecha_ini" required disabled>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fecha_fin">Fecha Fin</label>
+                        <input type="date" class="form-control" name="fecha_fin" id="fecha_fin" required disabled>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <h5>M&oacute;dulos del usuario</h5>
+                <div class="row pb-2">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered fixed-height-table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Nombre M&oacute;dulo
+                                        </th>
+                                        <th>
+                                            Activo
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Menu 1
+                                        </td>
+                                        <td>
+                                            <select class="form-control" name="menu_activo" id="menu_activo" required disabled>
+                                                <option value="">-- Seleccionar --</option>
+                                                <option value="true">Si</option>
+                                                <option value="false">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Menu 2
+                                        </td>
+                                        <td>
+                                            <select class="form-control" name="menu_activo" id="menu_activo" required disabled>
+                                                <option value="">-- Seleccionar --</option>
+                                                <option value="true">Si</option>
+                                                <option value="false">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <hr>            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" id="activar_edicion">Activar Edici&oacute;n</button>
+          <button type="submit" class="btn btn-primary" id="actualizarUsuario" disabled>Guardar</button>
+        </div>
+      </div>
+    </div>
+</div>
+

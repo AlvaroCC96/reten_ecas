@@ -156,4 +156,9 @@ $(document).ready( function () {
             }
         });
     });
+    
+    $("#id_alumno").selectize({
+        highlight: false,
+    });
+
 });

@@ -66,6 +66,7 @@ def entrevista(request):
             ISNULL(nombres + ' ', '') + ISNULL(apellido_m + ' ', '') + ISNULL(apellido_p, '') AS nombre_completo 
         FROM 
             tb_alumnos
+        order by rut asc
     """
     alumnos = None
     with connection.cursor() as cursor:
