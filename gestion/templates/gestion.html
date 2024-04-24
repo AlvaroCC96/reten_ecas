@@ -11,14 +11,15 @@
     <div class="card">
       <h5 class="card-header">Entrevista</h5>
       <div class="card-body">
-        <div id="external-events">
-          <h4>Eventos Arrastrables</h4>
-          <div class="fc-event">Evento 1</div>
-          <div class="fc-event">Evento 2</div>
-          <div class="fc-event">Evento 3</div>
-          <div class="fc-event">Evento 4</div>
-          <div class="fc-event">Evento 5</div>
+        <div id="external-events" style="background-color: #e0f2ff; border-radius: 5px;">
+
+          <div class="fc-event" style="background-color: #aaccff; padding: 10px; border-radius: 5px; margin-bottom: 5px;">Evento 1</div>
+          <div class="fc-event" style="background-color: #aaccff; padding: 10px; border-radius: 5px; margin-bottom: 5px;">Evento 2</div>
+          <div class="fc-event" style="background-color: #aaccff; padding: 10px; border-radius: 5px; margin-bottom: 5px;">Evento 3</div>
+          <div class="fc-event" style="background-color: #aaccff; padding: 10px; border-radius: 5px; margin-bottom: 5px;">Evento 4</div>
+          <div class="fc-event" style="background-color: #aaccff; padding: 10px; border-radius: 5px; margin-bottom: 5px;">Evento 5</div>
         </div>
+        
         
       </div>
     </div>
@@ -35,65 +36,30 @@
 
 <a href="/home" class="btn btn-secondary mt-4">Volver</a>
 
+{% include "modals_gestion.html" %}
 {% endblock %}
+
+
+
 {% block scripts %} 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="{% static '/js/index_global_min.js' %}"></script>
+<script src="{% static '/js/scripts_gestion.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script> -->
-<script>
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-    var externalEventsEl = document.getElementById('external-events');
-
-    new FullCalendar.Draggable(externalEventsEl, {
-      itemSelector: '.fc-event',
-      eventData: function(eventEl) {
-        return {
-          title: eventEl.innerText.trim()
-        };
-      }
-    });
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'timeGridWeek',
-      locale: 'es',
-      editable: true, // Permite arrastrar y soltar
-      droppable: true, // Permite soltar eventos
-      weekends: false, // Oculta los fines de semana
-      firstDay: 1, // Parte del lunes
-      allDaySlot: false,
-      slotMinTime: '08:00:00', // Hora de inicio (8:00 a.m.)
-      slotMaxTime: '21:00:00', // Hora de finalización (7:00 p.m.)
-      buttonText: {
-        today: 'Hoy'
-      },
-      eventClick: function(info) {
-        //Elimina el evento al hacer clic en él
-        alert("evento removido o editado")
-        info.event.remove();
-      },
-      eventDrop: function(info) {
-        // Callback cuando un evento es arrastrado y soltado
-        alert('Evento arrastrado a: ' + info.event.start);
-        alert('Horario antiguo inicio: ' + info.oldEvent.start);
-      },
-      selectable: true, // Permite seleccionar horas para crear eventos
-      select: function(arg) { // Callback al seleccionar una hora
-        var title = prompt('Nombre del evento:');
-        if (title) {
-          calendar.addEvent({
-            title: title,
-            start: arg.start,
-            end: arg.end,
-            allDay: false // Indica que el evento no es de todo el día
-          });
-        }
-        calendar.unselect(); // Desmarca la selección después de añadir el evento
-        },
-    });
-    calendar.render();
-  });
-
-</script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css"
+  integrity="sha512-pTaEn+6gF1IeWv3W1+7X7eM60TFu/agjgoHmYhAfLEU8Phuf6JKiiE8YmsNC0aCgQv4192s4Vai8YZ6VNM6vyQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js"
+  integrity="sha512-IOebNkvA/HZjMM7MxL0NYeLYEalloZ8ckak+NDtOViP7oiYzG5vn6WVXyrJDiJPhl4yRdmNAG49iuLmhkUdVsQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
 
 {% endblock %}

@@ -1,0 +1,143 @@
+<!-- Modal Crear Cita -->
+<div class="modal fade" id="crearCita" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><strong>Nueva Cita</strong></h5>
+        </div>
+        <div class="modal-body">
+          <form id="crearCitaForm">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="form-control" name="id_alumno" id="id_alumno" required disabled hidden> 
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="nombre_alumno"><strong>Nombre Alumno/a</strong></label>
+                        <input type="text" class="form-control" name="nombre_alumno" id="nombre_alumno" required disabled> 
+                    </div>
+                    <div class="col-md-6">
+                        <label for="rut"><strong>Rut</strong></label>
+                        <input type="text" class="form-control" name="rut" id="rut" required disabled>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="motivo"><strong>Motivo</strong></label>
+                        <select class="form-control" name="motivo" id="motivo" required>
+                            
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fecha_consulta"><strong>Fecha Consulta</strong></label>
+                        <input type="date" class="form-control" name="fecha_consulta" id="fecha_consulta" required disabled>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="hora_inicio_consulta"><strong>Hora Inicio Consulta</strong></label>
+                        <input type="text" class="form-control" name="hora_inicio_consulta" id="hora_inicio_consulta" required disabled>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="hora_termino_consulta"><strong>Hora Termino Consulta</strong></label>
+                        <input type="text" class="form-control" name="hora_termino_consulta" id="hora_termino_consulta" required disabled>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <label for="texto_comentario"><strong>Comentarios de la cita</strong></label>
+                        <textarea name="texto_comentario" id="texto_comentario" class="form-control" required></textarea>
+                        
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" id="crearCita">Crear Cita</button>
+          <!-- <button type="submit" class="btn btn-primary" id="actualizarUsuario" disabled>Agendar Cita</button> -->
+        </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Editar Cita -->
+<div class="modal fade" id="editarCita" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><strong>Editar Cita</strong></h5>
+        </div>
+        <div class="modal-body">
+          <form id="editarCitaForm">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="form-control" name="id_cita" id="id_cita" required disabled hidden> 
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="nombre_alumno"><strong>Nombre Alumno/a</strong></label>
+                        <input type="text" class="form-control" name="nombre_alumno" id="nombre_alumno" required disabled> 
+                    </div>
+                    <div class="col-md-6">
+                        <label for="rut"><strong>Rut</strong></label>
+                        <input type="text" class="form-control" name="rut" id="rut" required disabled>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="motivo"><strong>Motivo</strong></label>
+                        <select class="form-control" name="motivo" id="motivo" required>
+                            
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fecha_consulta"><strong>Fecha Consulta</strong></label>
+                        <input type="date" class="form-control" name="fecha_consulta" id="fecha_consulta" required disabled>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="hora_inicio_consulta"><strong>Hora Inicio Consulta</strong></label>
+                        <input type="text" class="form-control" name="hora_inicio_consulta" id="hora_inicio_consulta" required disabled>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="hora_termino_consulta"><strong>Hora Termino Consulta</strong></label>
+                        <input type="text" class="form-control" name="hora_termino_consulta" id="hora_termino_consulta" required disabled>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <label for="texto_comentario"><strong>Comentarios de la cita</strong></label>
+                        <textarea name="texto_comentario" id="texto_comentario" class="form-control" required></textarea>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="guardarCita">Guardar Datos</button>
+          <button type="button" class="btn btn-warning" id="terminarCita">Terminar Cita</button>
+          <button type="button" class="btn btn-danger" id="eliminarCita">Eliminar Cita</button>
+        </div>
+        </form>
+      </div>
+    </div>
+</div>

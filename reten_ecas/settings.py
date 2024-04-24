@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+# from dotenv import load_dotenv
+
+# load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,6 +49,7 @@ INSTALLED_APPS = [
     'encuesta',
     'modelosBD',
     'gestion',
+    # 'django_auth_adfs',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django_auth_adfs.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'reten_ecas.urls'
@@ -138,3 +143,65 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'home.Usuario'
+
+AUTHENTICATION_BACKENDS = [
+    # 'django_auth_adfs.backend.AdfsAuthCodeBackend',
+    'django.contrib.auth.backends.ModelBackend',  # Este backend es necesario para otros métodos de autenticación, como el panel de administración de Django
+]
+
+# Configure django to redirect users to the right URL for login
+# LOGIN_URL = "django_auth_adfs:login"
+# LOGIN_REDIRECT_URL = "/"
+
+# AUTH_ADFS = {
+#     'SERVER': 'https://login.microsoftonline.com/29fc6e2a-49bf-4002-a939-01b8edcb0aed/oauth2/v2.0/',
+#     'CLIENT_ID': '7fc27ef4-1b64-48f5-b07a-40ef723cbb63',
+#     'RELYING_PARTY_ID': 'http://localhost:8000',  # URL de tu aplicación Django
+#     'CLAIM_MAPPING': {'first_name': 'given_name', 'last_name': 'family_name', 'email': 'email'},
+#     'AUDIENCE': 'https://graph.microsoft.com', # Esto puede variar según tus necesidades específicas
+#     'CLIENT_SECRET': '29fc6e2a-49bf-4002-a939-01b8edcb0aed', # Tu Id. de secreto
+#     'USERNAME_CLAIM': 'email', # Specify the claim to use as the username
+# }
+
+
+# Client secret is not public information. Should store it as an environment variable.
+
+# client_id = os.getenv('client_id')
+# client_secret = os.getenv('client_secret')
+# tenant_id = os.getenv('tenant_id')
+
+client_id = '7fc27ef4-1b64-48f5-b07a-40ef723cbb63'
+client_secret = '4bd13772-7327-465d-be5d-4d4a52995ac5'
+tenant_id = '29fc6e2a-49bf-4002-a939-01b8edcb0aed'
+
+# AUTH_ADFS = {
+#     'AUDIENCE': client_id,
+#     'CLIENT_ID': client_id,
+#     'CLIENT_SECRET': client_secret,
+#     # 'CLAIM_MAPPING': {
+#     #     'first_name': 'given_name',
+#     #     'last_name': 'family_name',
+#     #     'email': 'email'
+#     # },
+#     # 'GROUPS_CLAIM': 'roles',
+#     'MIRROR_GROUPS': True,
+#     # 'USERNAME_CLAIM': 'email',  # Especifica el atributo de reclamación que deseas utilizar como nombre de usuario
+#     'TENANT_ID': tenant_id,
+#     'RELYING_PARTY_ID': client_id
+# }
+
+AUTH_ADFS = {
+    'SERVER': 'https://login.microsoftonline.com/adc11501-d885-4fea-a7ff-96723b15d25b/oauth2/v2.0/',
+    'CLIENT_ID': 'TU_CLIENT_ID',
+    'RELYING_PARTY_ID': 'http://localhost:8000',  # URL de tu aplicación Django
+    'USERNAME_CLAIM': 'email',  # Especifica el atributo de reclamación que deseas utilizar como nombre de usuario
+    'AUDIENCE': 'https://graph.microsoft.com',
+    'CLIENT_SECRET': '738bb499-d152-4883-beea-51260f43de6d', # Tu Id. de secreto
+    'CLAIMS': {
+        'email': 'email',
+        'first_name': 'given_name',
+        'last_name': 'family_name',
+    }
+}

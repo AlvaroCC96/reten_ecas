@@ -49,12 +49,10 @@ def postAusencia(request):
                 with connection.cursor() as cursor:
                     query = "INSERT INTO [tb_ausencia_departamentales] ([id_asignatura], [id_alumno], [fecha_ausencia], [departamental], [created_at], [updated_at]) VALUES (%s, %s, %s, %s, GETDATE(), GETDATE())"
                     cursor.execute(query,( int(codigo), id_alumno, fecha, departamental))
-                    
                 connection.commit()
             
             return JsonResponse({'message': 'Registros guardados exitosamente'})
         except Exception as e:
-            #print(e)
             return JsonResponse({'message': 'Error al guardar la información', 'error': e}, status=500)
     else:
         return JsonResponse({'message': 'Método no permitido'}, status=405)
@@ -73,7 +71,6 @@ def listadoAusencias(request):
             """
             cursor.execute(query)
             result = cursor.fetchall()
-            
         data = []
         if result is not None:
             for row in result:

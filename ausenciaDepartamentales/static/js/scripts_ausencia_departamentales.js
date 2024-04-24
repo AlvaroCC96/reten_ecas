@@ -1,6 +1,6 @@
 
 $(document).ready( function () {
-
+    
     $('#asignaturas').DataTable({
         "bLengthChange" : false,
         "language": {

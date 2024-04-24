@@ -25,4 +25,5 @@ urlpatterns = [
     path('', include('modelos.urls')),
     path('', include('encuesta.urls')),
     path('', include('gestion.urls')),
+    # path('oauth2/', include('django_auth_adfs.urls')),
 ]

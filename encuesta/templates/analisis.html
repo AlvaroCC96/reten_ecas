@@ -34,7 +34,7 @@
         });
 
         const obtenerDatosGrafico = (id_categoria) => {
-            fetch('../obtener_datos_grafico/' + id_categoria)  // Reemplaza '/obtener_datos_grafico/' con la URL correcta de tu endpoint
+            fetch('../obtener_datos_grafico/' + id_categoria)  
             .then(response => response.json())
             .then(data => {
                 // Extraer datos y etiquetas del objeto JSON
